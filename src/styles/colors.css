@@ -1,0 +1,27 @@
+@media (prefers-color-scheme: dark) {
+    :root {
+        --color: #dfdfdf;
+        --background: #023530;
+        --a: #42b983;
+        --page-element-background: #00000075;
+        --gif-shadow: #2a2a2a;
+        --username-color: #b4b4b4;
+        --button-background: #FFFFFF26;
+        --button-color-hover: #3434344C;
+        --button-color-selected: #FFFFFF26;
+    }
+}
+
+@media (prefers-color-scheme: light) {
+    :root {
+        --color: #111111;
+        --background: #556263FF;
+        --a: #102b1f;
+        --page-element-background: #e8e8e8d9;
+        --gif-shadow: #7e7e7e;
+        --username-color: #2a2a2a;
+        --button-background: #C4C4C426;
+        --button-color-hover: #3434344C;
+        --button-color-selected: #BFBFBF94;
+    }
+}

@@ -1,0 +1,68 @@
+:root {
+    color-scheme: light dark;
+}
+
+html {
+    font-family: "Noto Sans", serif;
+    color: var(--color);
+    background: var(--background);
+    height: 100vh;
+    min-width: 320px;
+
+}
+
+html body {
+    max-height: 100vh;
+    height: -webkit-fill-available;
+}
+
+html body a {
+    color: var(--a);
+    text-decoration: underline;
+}
+
+[data-whatinput="keyboard"] *:focus {
+    outline: 3px dashed var(--color);
+}
+
+*:focus {
+    outline: none;
+}
+
+#app {
+    display: flex;
+    flex-direction: column;
+    height: 99%;
+}
+
+.page-element {
+    width: 500px;
+    margin: 0 auto;
+    padding: 2rem 2rem 0;
+    background: var(--page-element-background);
+
+}
+
+.page-element:first-child {
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+}
+
+.page-element:last-child {
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    padding-bottom: 2rem;
+}
+
+@media (max-width: 587px) {
+    .page-element {
+        width: 90%;
+        margin: 0 auto;
+        padding: 1rem 1rem 0;
+
+    }
+
+    .page-element:last-child {
+        padding-bottom: 1rem;
+    }
+}
