@@ -18,6 +18,7 @@
     ],
     "extends": [
         "eslint:recommended",
-        "plugin:jest/recommended"
+        "plugin:jest/recommended",
+        "plugin:vue/recommended"
     ]
 }
