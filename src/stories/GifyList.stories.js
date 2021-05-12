@@ -2,6 +2,9 @@ import "../styles/common.css";
 import GifyList from '../components/GifyList.vue';
 import { UI_STATE } from "../scripts/ui-state.js";
 
+import '../styles/colors.css';
+import '../styles/common.css';
+
 
 const ExampleGify = {
     bitly_url: "https://gph.is/g/Eq0nMYR",
@@ -45,7 +48,6 @@ SearchWithOneGify.args = {
     ],
     uiState: UI_STATE.SEARCH,
 };
-
 
 
 export const SearchWithSomeGifies = Template.bind({});

@@ -1,6 +1,8 @@
 import "../styles/common.css";
 import SearchComponent from "../components/Search.vue";
 
+import '../styles/colors.css';
+import '../styles/common.css';
 
 export default {
     title: 'Gify/Search',

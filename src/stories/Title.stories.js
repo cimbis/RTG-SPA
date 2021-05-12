@@ -1,6 +1,9 @@
 import "../styles/common.css";
 import TitleComponent from "../components/Title.vue";
 
+import '../styles/colors.css';
+import '../styles/common.css';
+
 
 export default {
     title: 'Gify/Title',

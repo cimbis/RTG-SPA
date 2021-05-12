@@ -2,6 +2,9 @@ import "../styles/common.css";
 import NavComponent from "../components/Nav.vue";
 import { UI_STATE } from "../scripts/ui-state.js";
 
+import '../styles/colors.css';
+import '../styles/common.css';
+
 
 export default {
     title: 'Gify/Nav',
