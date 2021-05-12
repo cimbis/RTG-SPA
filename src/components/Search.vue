@@ -1,19 +1,25 @@
 <template>
-    <div id="search" class="page-element">
-
-        <label for="search-form"></label>
-        <form id="search-form" aria-label="gify search form" v-on:submit.prevent="onSubmit">
-            <input id="search-giffies"
-                   v-model.trim="searchTerm"
-                   placeholder="Search Gifies"
-                   aria-label="gify search box"
-                   type="text">
+    <div
+        id="search"
+        class="page-element"
+    >
+        <form
+            id="search-form"
+            aria-label="gify search form"
+            @submit.prevent="onSubmit"
+        >
+            <input
+                id="search-giffies"
+                v-model.trim="searchTerm"
+                aria-label="gify search box"
+                placeholder="Search Gifies"
+                type="text"
+            >
 
             <button aria-label="search">
                 🔍
             </button>
         </form>
-
     </div>
 </template>
 
@@ -35,7 +41,6 @@ export default {
 }
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style lang="scss" scoped>
 
 form {
@@ -77,7 +82,7 @@ button {
     }
 }
 
-@supports (-webkit-touch-callout: none) {
+[data-whatintent="touch"] {
     input {
         margin-right: -0.1875rem;
     }

@@ -1,5 +1,8 @@
 <template>
-    <div id="title" class="page-element">
+    <div
+        id="title"
+        class="page-element"
+    >
         <h1>{{ msg }}</h1>
         <p>{{ desc }}</p>
     </div>
@@ -9,8 +12,14 @@
 export default {
     name: 'Title',
     props: {
-        msg: String,
-        desc: String,
+        msg: {
+            type: String,
+            default: 'Gify'
+        },
+        desc: {
+            type: String,
+            default: 'The one and only'
+        }
     }
 }
 </script>

@@ -1,17 +1,25 @@
 <template>
     <div class="page-element">
-        <div v-for="(gify, index) in gifies"
-             :key="index"
-             class="gify-container">
-
+        <div
+            v-for="(gify, index) in gifies"
+            :key="index"
+            class="gify-container"
+        >
             <div class="gif-img">
                 <figure>
-                    <img :alt="gify.title" :src="gify.gif_url">
+                    <img
+                        :alt="gify.title"
+                        :src="gify.gif_url"
+                    >
                 </figure>
             </div>
 
             <div class="gif-description">
-                <a :href="gify.bitly_url" class="title" target="_blank">
+                <a
+                    :href="gify.bitly_url"
+                    class="title"
+                    target="_blank"
+                >
                     {{ gify.title }}
                 </a>
                 <div class="username">
@@ -19,7 +27,10 @@
                 </div>
             </div>
 
-            <div v-if="uiState === uiStateEnum.SEARCH" class="gif-action">
+            <div
+                v-if="uiState === uiStateEnum.SEARCH"
+                class="gif-action"
+            >
                 <button
                     aria-label="add to favourites"
                     class="action-btn"
@@ -29,7 +40,10 @@
                 </button>
             </div>
 
-            <div v-else class="gif-action">
+            <div
+                v-else
+                class="gif-action"
+            >
                 <button
                     class="action-btn"
                     @click="removeFromFavourites(gify)"
@@ -37,7 +51,6 @@
                     💔
                 </button>
             </div>
-
         </div>
     </div>
 </template>
@@ -50,8 +63,14 @@ export default {
     name: 'GiffyList',
 
     props: {
-        gifies: Array,
-        uiState: String,
+        gifies: {
+            type: Array,
+            default: () => []
+        },
+        uiState: {
+            type: String,
+            default: UI_STATE.SEARCH
+        }
     },
 
     data() {
@@ -86,8 +105,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import "../styles/colors.css";
-@import "../styles/common.css";
 
 .page-element {
     overflow: scroll;
@@ -157,13 +174,10 @@ figure img {
         &:active {
             cursor: pointer;
             background-color: var(--button-color-hover);
-
             border-radius: 50%;
             padding: 0.6rem;
             font-size: 1.5rem;
         }
     }
 }
-
-
 </style>

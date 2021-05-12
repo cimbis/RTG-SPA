@@ -5,7 +5,7 @@
             :msg="titleMessage"
         />
         <Nav
-            :uiState="uiState"
+            :ui-state="uiState"
             @selectedUiState="uiStateChanged"
         />
         <Search
@@ -19,7 +19,7 @@
             @addToFavourites="addToFavourites"
             @removeFromFavourites="removeFromFavourites"
         />
-        <Loader v-if="giffiesLoading"/>
+        <Loader v-if="giffiesLoading" />
     </div>
 </template>
 
@@ -37,8 +37,6 @@ import Loader from "./components/Loader.vue";
 export default {
     name: "App",
 
-    mixins: [GifyService],
-
     components: {
         Title,
         Nav,
@@ -46,6 +44,8 @@ export default {
         GifyList,
         Loader,
     },
+
+    mixins: [GifyService],
 
     data() {
         return {
@@ -104,6 +104,4 @@ export default {
 </script>
 
 <style lang="scss">
-@import "styles/colors.css";
-@import "styles/common.css";
 </style>

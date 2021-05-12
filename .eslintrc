@@ -21,5 +21,9 @@
         "eslint:recommended",
         "plugin:jest/recommended",
         "plugin:vue/recommended"
-    ]
+    ],
+    "rules": {
+        "indent": ["warn", 4],
+        "vue/html-indent": ["warn", 4]
+    }
 }

@@ -1,5 +1,8 @@
 <template>
-    <div class="page-element">
+    <div
+        id="nav"
+        class="page-element"
+    >
         <form>
             <div
                 id="segmented-navigation"
@@ -8,25 +11,33 @@
             >
                 <input
                     id="search-segment"
-                    :checked="uiState === UI_STATE_ENUM.SEARCH"
+                    v-model="radioState"
                     :value="UI_STATE_ENUM.SEARCH"
                     class="radio"
                     name="ui-state"
                     type="radio"
                     @change="radioSelected"
-                />
-                <label class="segment" for="search-segment"> Search </label>
+                >
+                <label
+                    class="segment"
+                    for="search-segment"
+                >
+                    Search
+                </label>
 
                 <input
                     id="favourites-segment"
-                    :checked="uiState === UI_STATE_ENUM.FAVOURITES"
+                    v-model="radioState"
                     :value="UI_STATE_ENUM.FAVOURITES"
                     class="radio"
                     name="ui-state"
                     type="radio"
                     @change="radioSelected"
-                />
-                <label class="segment" for="favourites-segment">
+                >
+                <label
+                    class="segment"
+                    for="favourites-segment"
+                >
                     Favourites
                 </label>
             </div>
@@ -41,11 +52,15 @@ import { UI_STATE } from "../scripts/ui-state.js";
 export default {
     name: "Navigation",
     props: {
-        uiState: String,
+        uiState:{
+            type: String,
+            default: UI_STATE.SEARCH
+        }
     },
     data() {
         return {
-            UI_STATE_ENUM: UI_STATE
+            UI_STATE_ENUM: UI_STATE,
+            radioState: this.uiState,
         }
     },
     methods: {
@@ -112,4 +127,10 @@ export default {
 [data-whatinput="keyboard"] .radio:focus + .segment {
     outline: 3px dashed var(--color);
 }
+
+[data-whatintent="touch"] .radio + .segment:hover,
+[data-whatintent="touch"] .radio:checked + .segment:hover {
+    background-color: var(--button-color-selected);
+}
+
 </style>
