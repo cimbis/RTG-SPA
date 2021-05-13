@@ -1,7 +1,7 @@
 <template>
     <div class="page-element">
         <div class="lds-heart">
-            <div></div>
+            <div />
         </div>
     </div>
 </template>
@@ -17,6 +17,8 @@ export default {
 .page-element {
     display: flex;
     justify-content: center;
+    //margin: 0 auto;
+    //padding: 2rem
 }
 
 .lds-heart {
