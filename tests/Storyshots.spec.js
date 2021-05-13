@@ -54,7 +54,7 @@ describe('Image Snapshots [LIGHT]', () => {
                         })
                     }
                 );
-            }
+            },
         })
     });
 })
@@ -63,11 +63,26 @@ describe('Image Snapshots [DARK]', () => {
     initStoryshots({
         suite: 'Image Snapshots',
         test: imageSnapshot({
-            customizePage: (page) => {
-                page.emulateMediaFeatures([{
+            customizePage: async (page) => {
+                await page.emulateMediaFeatures([{
                     name: 'prefers-color-scheme',
                     value: 'dark'
                 }])
+
+                // await page.setViewport({
+                //     width: 1280,
+                //     height: 800,
+                //     isMobile: false
+                // });
+
+                // await page.setViewport({
+                //     width: 375,
+                //     height: 812,
+                //     deviceScaleFactor: 1,
+                //     isMobile: true,
+                //     hasTouch: true,
+                //     isLandscape: false
+                // });
             },
             beforeScreenshot: async (page) => {
                 await page.waitForSelector('.page-element');
@@ -76,7 +91,6 @@ describe('Image Snapshots [DARK]', () => {
                     images => {
                         images.forEach(img => {
                             img.removeAttribute('src');
-                            img.setAttribute('src', 'https://via.placeholder.com/100');
                         })
                     }
                 );
