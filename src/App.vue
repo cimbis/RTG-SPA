@@ -1,26 +1,34 @@
 <template>
-    <div id="app">
-        <Title
-            :desc="titleDescription"
-            :msg="titleMessage"
+    <fragment>
+        <div id="app">
+            <Title
+                :desc="titleDescription"
+                :msg="titleMessage"
+            />
+            <Nav
+                :ui-state="uiState"
+                @selectedUiState="uiStateChanged"
+            />
+            <Search
+                v-if="uiState === UI_STATE_ENUM.SEARCH"
+                @searchGifies="searchTermApplied"
+            />
+            <GifyList
+                v-if="!giffiesLoading && gifyList.length > 0"
+                :gifies="gifyList"
+                :ui-state="uiState"
+                @addToFavourites="addToFavourites"
+                @removeFromFavourites="removeFromFavourites"
+            />
+            <Loader v-if="giffiesLoading"/>
+        </div>
+
+        <notifications
+            classes="notification"
+            group="notifications"
+            position="top center"
         />
-        <Nav
-            :ui-state="uiState"
-            @selectedUiState="uiStateChanged"
-        />
-        <Search
-            v-if="uiState === UI_STATE_ENUM.SEARCH"
-            @searchGifies="searchTermApplied"
-        />
-        <GifyList
-            v-if="!giffiesLoading && gifyList.length > 0"
-            :gifies="gifyList"
-            :ui-state="uiState"
-            @addToFavourites="addToFavourites"
-            @removeFromFavourites="removeFromFavourites"
-        />
-        <Loader v-if="giffiesLoading" />
-    </div>
+    </fragment>
 </template>
 
 <script>
@@ -94,14 +102,52 @@ export default {
             if (this.gifyFavourites.length > 10) {
                 this.gifyFavourites.shift();
             }
+            this.$notify({
+                group: 'notifications',
+                title: 'Added to Favourites',
+                text: gify.title,
+                duration: 2000
+            });
         },
 
         removeFromFavourites(gify) {
-            this.gifyFavourites = this.gifyFavourites.filter(favourite => favourite.gif_url !== gify.gif_url);
+            this.gifyFavourites =
+                this
+                    .gifyFavourites
+                    .filter(favourite => favourite.gif_url !== gify.gif_url);
+
+            this.$notify({
+                group: 'notifications',
+                title: 'Removed from Favourites',
+                text: gify.title,
+                duration: 2000
+            });
         }
     },
 };
 </script>
 
 <style lang="scss">
+.notification {
+    display: flex;
+    flex-direction: column;
+    max-width: 320px;
+    max-height: 12rem;
+    min-height: 7rem;
+    margin: 2rem;
+    padding: 1rem;
+    box-shadow: var(--background) 0 1rem 1rem;
+    background-color: var(--page-element-background);
+    border-radius: 1.25rem;
+    border: 1px solid var(--a);
+
+    .notification-title {
+        padding: 1rem 1rem 0;
+        font-size: 1.25rem;
+    }
+
+    .notification-content {
+        padding: 1rem;
+    }
+}
 </style>
