@@ -1,7 +1,7 @@
 {
     "parser": "vue-eslint-parser",
     "parserOptions": {
-        "ecmaVersion": 6,
+        "ecmaVersion": 8,
         "sourceType": "module",
         "ecmaFeatures": {
             "classes": true
@@ -15,11 +15,13 @@
     },
     "plugins": [
         "jest",
+        "testing-library",
         "vue"
     ],
     "extends": [
         "eslint:recommended",
         "plugin:jest/recommended",
+        "plugin:testing-library/vue",
         "plugin:vue/recommended"
     ],
     "rules": {
