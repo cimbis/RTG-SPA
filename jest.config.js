@@ -3,8 +3,8 @@ process.env.VUE_CLI_BABEL_TRANSPILE_MODULES = true;
 
 module.exports = {
     clearMocks: true,
-    collectCoverage: true,
-    coverageDirectory: "coverage",
+    // collectCoverage: true,
+    // coverageDirectory: "coverage",
     testEnvironment: "jsDom",
     preset: "jest-puppeteer",
     moduleFileExtensions: ['js', 'vue','json'],
