@@ -1,7 +1,7 @@
 <template>
     <div class="search-container">
         <Search
-            :searchParam="searchParam"
+            :search-param="searchParam"
             @searchGifies="searchTermApplied"
         />
         <div
@@ -58,23 +58,45 @@ export default {
         }
     },
 
+    beforeRouteEnter(to, from, next) {
+        next(vm => {
+            // eslint-disable-next-line no-debugger
+            debugger;
+
+            if (!to.query['searchTerm'] && vm.searchParam.length > 0) {
+                vm.$router.push({ query: { searchTerm: vm.searchParam } })
+            }
+
+            else if (!to.query['searchTerm'] || to.query['searchTerm'] === vm.searchParam) {
+                next()
+            }
+
+            else if (to.query['searchTerm'] !== vm.searchParam) {
+                vm.searchTermApplied(to.query['searchTerm']);
+                next();
+            }
+        })
+
+
+    },
+
     methods: {
-        searchTermApplied(searchTerm) {
+        searchTermApplied(searchParam) {
             this.$store.commit('setGiffiesLoading', true);
             const randomTimeout = Math.random() * (3000 - 500) + 500;
 
             setTimeout(() => {
-                this.getGiffies(searchTerm)
+                this.getGiffies(searchParam)
                     .then(gifies => {
                         this.$store.commit('setSearchResults', gifies);
                         this.$store.commit('setGiffiesLoading', false);
-                        this.$store.commit('setSearchParam', searchTerm);
+                        this.$store.commit('setSearchParam', searchParam);
                     })
                     .catch(e => console.error(e));
             }, randomTimeout)
 
-            if (this.$router.currentRoute.query['searchTerm'] !== searchTerm) {
-                this.$router.push({ query: { searchTerm: searchTerm } })
+            if (this.$router.currentRoute.query['searchTerm'] !== searchParam) {
+                this.$router.push({ query: { searchTerm: searchParam } })
             }
         },
 

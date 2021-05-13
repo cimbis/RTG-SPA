@@ -14,6 +14,7 @@
                 aria-label="gify search box"
                 placeholder="Search Gifies"
                 type="text"
+                ref="input"
             >
 
             <button aria-label="search">
@@ -37,6 +38,13 @@ export default {
     data() {
         return {
             searchTerm: this.searchParam
+        }
+    },
+
+    watch: {
+        searchParam(newParam) {
+            this.searchTerm = newParam;
+            this.$refs.input.value = newParam
         }
     },
 
