@@ -6,6 +6,12 @@
             :ui-state="UI_STATE_ENUM.FAVOURITES"
             @removeFromFavourites="removeFromFavourites"
         />
+        <div
+            v-if="gifyList.length === 0"
+            class="page-element"
+        >
+            No Faves yet :(
+        </div>
     </div>
 </template>
 

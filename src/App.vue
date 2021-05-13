@@ -52,6 +52,9 @@ export default {
         uiState() {
             const currentPath = this.$router.currentRoute.path;
             return currentPath.slice(1, currentPath.length);
+        },
+        searchTerm() {
+            return this.$store.getters.getSearchParam;
         }
     },
 
@@ -60,6 +63,7 @@ export default {
             const path = state === this.UI_STATE_ENUM.SEARCH
                 ? ROUTES.SEARCH
                 : ROUTES.FAVOURITES;
+
             this.$router.push(path);
         },
     },

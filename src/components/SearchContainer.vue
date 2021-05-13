@@ -1,6 +1,7 @@
 <template>
     <div class="search-container">
         <Search
+            :searchParam="searchParam"
             @searchGifies="searchTermApplied"
         />
         <div
@@ -47,14 +48,13 @@ export default {
 
     computed: {
         gifyList() {
-            const results = this.$store.getters.getSearchResults;
-            console.log(results);
-            return results;
+            return this.$store.getters.getSearchResults;
         },
         giffiesLoading() {
-            const loading = this.$store.getters.getGiffiesLoadingBoolean;
-            console.log(loading);
-            return loading;
+            return this.$store.getters.getGiffiesLoadingBoolean;
+        },
+        searchParam() {
+            return this.$store.getters.getSearchParam;
         }
     },
 

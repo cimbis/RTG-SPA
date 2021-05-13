@@ -27,9 +27,16 @@
 export default {
     name: 'Search',
 
+    props: {
+        searchParam: {
+            type: String,
+            default: ''
+        }
+    },
+
     data() {
         return {
-            searchTerm: ''
+            searchTerm: this.searchParam
         }
     },
 

@@ -7,7 +7,7 @@ export const store = new Vuex.Store({
     state: {
         gifySearchResults: [],
         gifyFavourites: [],
-        searchParam: null,
+        searchParam: '',
         giffiesLoading: false,
     },
     getters: {
