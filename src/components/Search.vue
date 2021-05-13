@@ -1,7 +1,7 @@
 <template>
     <div
         id="search"
-        class="page-element"
+        class="search page-element"
     >
         <form
             id="search-form"

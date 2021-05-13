@@ -1,10 +1,11 @@
 {
     "parser": "vue-eslint-parser",
     "parserOptions": {
-        "ecmaVersion": 8,
+        "ecmaVersion": 2018,
         "sourceType": "module",
         "ecmaFeatures": {
-            "classes": true
+            "classes": true,
+            "experimentalObjectRestSpread": true
         }
     },
     "env": {

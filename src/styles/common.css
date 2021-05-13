@@ -21,8 +21,8 @@ html body {
     outline: 3px dashed var(--color);
 }
 
-[data-whatinput="mouse"] *:focus,
-[data-whatinput="mouse"] *:focus-visible
+[data-whatintent="mouse"] *:focus,
+[data-whatintent="mouse"] *:focus-visible
 *:focus {
     outline: none;
 }
@@ -45,14 +45,7 @@ html body {
 
 }
 
-.page-element:first-of-type {
-    border-top-left-radius: 1.25rem;
-    border-top-right-radius: 1.25rem;
-}
-
 .page-element:last-of-type {
-    border-bottom-left-radius: 1.25rem;
-    border-bottom-right-radius: 1.25rem;
     padding-bottom: 2rem;
 }
 

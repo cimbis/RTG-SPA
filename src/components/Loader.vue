@@ -1,5 +1,5 @@
 <template>
-    <div class="page-element">
+    <div class="loader page-element">
         <div class="lds-heart">
             <div />
         </div>
@@ -14,7 +14,7 @@ export default {
 
 <style scoped lang="scss">
 
-.page-element {
+.loader {
     display: flex;
     justify-content: center;
     //margin: 0 auto;

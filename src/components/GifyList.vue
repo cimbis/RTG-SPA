@@ -1,5 +1,5 @@
 <template>
-    <div class="page-element">
+    <div class="gify-list page-element">
         <div
             v-for="(gify, index) in gifies"
             :key="index"
@@ -30,7 +30,7 @@
             </div>
 
             <div
-                v-if="uiState === uiStateEnum.SEARCH"
+                v-if="uiState === UI_STATE_ENUM.SEARCH"
                 class="gif-action"
             >
                 <button
@@ -43,7 +43,7 @@
             </div>
 
             <div
-                v-else
+                v-if="uiState === UI_STATE_ENUM.FAVOURITES"
                 class="gif-action"
             >
                 <button
@@ -65,6 +65,7 @@
 
 <script>
 import { UI_STATE } from '../scripts/ui-state.js';
+import Vue from "vue";
 
 
 export default {
@@ -83,7 +84,7 @@ export default {
 
     data() {
         return {
-            uiStateEnum: UI_STATE,
+            UI_STATE_ENUM: UI_STATE,
             themeBasedHeart: '',
         }
     },
@@ -114,7 +115,7 @@ export default {
 
             this.$copyText(this.$refs.invisibleTextRef.value)
                 .then(() => {
-                    this.$notify({
+                    Vue.notify({
                         group: 'notifications',
                         title: 'Link to Gify copied!',
                         text: gify.title,
@@ -123,9 +124,6 @@ export default {
                     this.$refs.invisibleTextRef.value = "";
                 })
                 .catch(e => console.log(e))
-
-
-
         }
     }
 }
@@ -133,8 +131,10 @@ export default {
 
 <style lang="scss" scoped>
 
-.page-element {
+.gify-list {
     overflow: scroll;
+    height: calc(100% - 4rem);
+    //padding: 0.5rem 0 1rem;
 }
 
 .gify-container {
@@ -148,7 +148,6 @@ export default {
 .gif-img {
     display: flex;
     background: linear-gradient(223deg, #383737 0.42%, #393838);
-    box-shadow: var(--gif-shadow) 0 5px 25px;
     height: 6.25rem;
     width: 6.25rem;
     justify-content: center;
