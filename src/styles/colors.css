@@ -3,7 +3,8 @@
         --color: #dfdfdf;
         --background: #023530;
         --a: #42b983;
-        --page-element-background: #00000075;
+        --page-element-background-transparent: #00000075;
+        --page-element-background: #000b0a;
         --gif-shadow: #2a2a2a;
         --username-color: #b4b4b4;
         --button-background: #FFFFFF26;
@@ -17,7 +18,8 @@
         --color: #111111;
         --background: #556263FF;
         --a: #102b1f;
-        --page-element-background: #e8e8e8d9;
+        --page-element-background-transparent: #e8e8e8d9;
+        --page-element-background: #ececec;
         --gif-shadow: #7e7e7e;
         --username-color: #2a2a2a;
         --button-background: #C4C4C426;

@@ -16,13 +16,15 @@ html body {
     height: -webkit-fill-available;
 }
 
-html body a {
-    color: var(--a);
-    text-decoration: underline;
+[data-whatinput="keyboard"] *:focus,
+[data-whatinput="keyboard"] *:focus-visible {
+    outline: 3px dashed var(--color);
 }
 
-[data-whatinput="keyboard"] *:focus {
-    outline: 3px dashed var(--color);
+[data-whatinput="mouse"] *:focus,
+[data-whatinput="mouse"] *:focus-visible
+*:focus {
+    outline: none;
 }
 
 [data-whatintent="touch"] *:focus {
@@ -39,18 +41,18 @@ html body a {
     width: 500px;
     margin: 0 auto;
     padding: 2rem 2rem 0;
-    background: var(--page-element-background);
+    background: var(--page-element-background-transparent);
 
 }
 
-.page-element:first-child {
-    border-top-left-radius: 20px;
-    border-top-right-radius: 20px;
+.page-element:first-of-type {
+    border-top-left-radius: 1.25rem;
+    border-top-right-radius: 1.25rem;
 }
 
-.page-element:last-child {
-    border-bottom-left-radius: 20px;
-    border-bottom-right-radius: 20px;
+.page-element:last-of-type {
+    border-bottom-left-radius: 1.25rem;
+    border-bottom-right-radius: 1.25rem;
     padding-bottom: 2rem;
 }
 
