@@ -15,13 +15,15 @@
             </div>
 
             <div class="gif-description">
-                <a
-                    :href="gify.bitly_url"
+                <span
+                    aria-label="gify title"
                     class="title"
-                    target="_blank"
+                    tabindex="0"
+                    @click="(e) => copyGifyLink(e, gify)"
+                    @keydown.enter.space.prevent="(e) => copyGifyLink(e, gify)"
                 >
                     {{ gify.title }}
-                </a>
+                </span>
                 <div class="username">
                     {{ gify.username }}
                 </div>
@@ -52,6 +54,12 @@
                 </button>
             </div>
         </div>
+
+        <input
+            ref="invisibleTextRef"
+            class="invisible"
+            type="text"
+        >
     </div>
 </template>
 
@@ -99,6 +107,25 @@ export default {
             mq.matches
                 ? this.themeBasedHeart = '🤍'
                 : this.themeBasedHeart = '🖤';
+        },
+
+        copyGifyLink(evt, gify) {
+            this.$refs.invisibleTextRef.value = gify.bitly_url;
+
+            this.$copyText(this.$refs.invisibleTextRef.value)
+                .then(() => {
+                    this.$notify({
+                        group: 'notifications',
+                        title: 'Link to Gify copied!',
+                        text: gify.title,
+                        duration: 2000
+                    });
+                    this.$refs.invisibleTextRef.value = "";
+                })
+                .catch(e => console.log(e))
+
+
+
         }
     }
 }
@@ -113,7 +140,7 @@ export default {
 .gify-container {
     display: flex;
 
-    &:not(:last-child) {
+    &:not(:last-of-type) {
         margin-bottom: 1rem;
     }
 }
@@ -141,6 +168,7 @@ figure {
 
 figure img {
     height: 100%;
+    min-width: 100px;
 }
 
 .gif-description {
@@ -148,6 +176,15 @@ figure img {
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
+}
+
+.title {
+    color: var(--a);
+    text-decoration: underline;
+
+    &:hover {
+        cursor: pointer;
+    }
 }
 
 .username {
@@ -179,5 +216,9 @@ figure img {
             font-size: 1.5rem;
         }
     }
+}
+
+.invisible {
+    display: none;
 }
 </style>
