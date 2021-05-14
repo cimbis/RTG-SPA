@@ -55,18 +55,6 @@ describe('Image Snapshots [LIGHT]', () => {
                     }
                 );
             },
-
-            // 🤷‍♂️
-            // storyKindRegex: /^((?!.*?Loader).)*$/,
-
-            // 🤷‍♂️
-            // getMatchOptions: ({ context: { kind, story}, device, viewport }) => ({
-            //     customSnapshotIdentifier:
-            //         (device ? `${ device.name }-` : '') +
-            //         (viewport ? `${ viewport.width }X${ viewport.height }-` : '') +
-            //         `${ kind }-${ story }`
-            //             .toLowerCase()
-            // }),
         })
     });
 })

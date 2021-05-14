@@ -20,7 +20,7 @@ export default {
         this.$nextTick(() => {
             this.$refs.loader.setAttribute('tabindex', '0');
             this.$refs.loader.focus();
-            this.$refs.loader.loader('focusout', () => {
+            this.$refs.loader.addEventListener('focusout', () => {
                 this.$refs.gifyListContainer.removeAttribute('tabindex');
             });
         })
@@ -39,8 +39,7 @@ export default {
 .loader {
     display: flex;
     justify-content: center;
-    //margin: 0 auto;
-    //padding: 2rem
+    //margin: 1rem auto;
 }
 
 .lds-heart {

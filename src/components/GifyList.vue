@@ -33,7 +33,15 @@
                     {{ gify.title }}
                 </span>
                 <div class="username">
-                    {{ gify.username }}
+                    <div>
+                        <div>
+                            <div>
+                                <div>
+                                    {{ gify.username }}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
 

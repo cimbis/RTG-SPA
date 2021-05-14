@@ -16,7 +16,7 @@ export const parameters = {
 // must set up notifications from scratch to have the same look as in app
 // bet let's not do it now - we just need storybook not to give up on us.
 Vue.use(Notifications);
-Vue.use(VueClipboard)
+Vue.use(VueClipboard);
 
 // Register global components.
 Vue.component('GifyList', GifyList);
