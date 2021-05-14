@@ -22,7 +22,6 @@
 </template>
 
 <script>
-import { GifyService } from "./scripts/gify-service.js";
 import { ROUTES } from "./scripts/router.js";
 import { UI_STATE } from "./scripts/ui-state.js";
 
@@ -37,8 +36,6 @@ export default {
         Title,
         Nav,
     },
-
-    mixins: [GifyService],
 
     data() {
         return {
