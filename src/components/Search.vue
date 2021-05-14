@@ -10,11 +10,11 @@
         >
             <input
                 id="search-giffies"
+                ref="input"
                 v-model.trim="searchTerm"
                 aria-label="gify search box"
                 placeholder="Search Gifies"
                 type="text"
-                ref="input"
             >
 
             <button aria-label="search">
