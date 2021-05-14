@@ -27,6 +27,7 @@
     ],
     "rules": {
         "indent": ["warn", 4],
-        "vue/html-indent": ["warn", 4]
+        "vue/html-indent": ["warn", 4],
+        "vue/html-closing-bracket-spacing": "off"
     }
 }
