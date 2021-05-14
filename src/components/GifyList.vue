@@ -1,9 +1,15 @@
 <template>
-    <div class="gify-list page-element">
+    <div
+        ref="gifyListContainer"
+        aria-label="Gify List"
+        class="gify-list page-element"
+        role="list"
+    >
         <div
             v-for="(gify, index) in gifies"
             :key="index"
             class="gify-container"
+            role="listitem"
         >
             <div class="gif-img">
                 <figure>
@@ -22,6 +28,9 @@
                     @click="(e) => copyGifyLink(e, gify)"
                     @keydown.enter.space.prevent="(e) => copyGifyLink(e, gify)"
                 >
+                    <div class="sr-only">
+                        gify title - click to copy gify link to clipboard
+                    </div>
                     {{ gify.title }}
                 </span>
                 <div class="username">
@@ -93,6 +102,20 @@ export default {
         const mq = window.matchMedia('(prefers-color-scheme: dark)')
         mq.addEventListener('change', e => this.updateTheme(e));
         this.updateTheme(mq)
+    },
+
+    mounted() {
+        this.$refs.gifyListContainer.setAttribute('tabindex', '0');
+        this.$refs.gifyListContainer.focus();
+        this.$refs.gifyListContainer.addEventListener('focusout', () => {
+            this.$refs.gifyListContainer.removeAttribute('tabindex');
+        });
+    },
+
+    destroyed() {
+        this.$refs.gifyListContainer.removeEventListener('focusout', () => {
+            this.$refs.gifyListContainer.removeAttribute('tabindex');
+        })
     },
 
     methods: {

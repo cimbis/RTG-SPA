@@ -60,9 +60,6 @@ export default {
 
     beforeRouteEnter(to, from, next) {
         next(vm => {
-            // eslint-disable-next-line no-debugger
-            debugger;
-
             if (!to.query['searchTerm'] && vm.searchParam.length > 0) {
                 vm.$router.push({ query: { searchTerm: vm.searchParam } })
             }

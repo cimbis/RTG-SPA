@@ -1,5 +1,11 @@
 <template>
-    <div class="loader page-element">
+    <div
+        ref="loader"
+        class="loader page-element"
+    >
+        <div class="sr-only">
+            Loading giffies
+        </div>
         <div class="lds-heart">
             <div />
         </div>
@@ -8,7 +14,21 @@
 
 <script>
 export default {
-    name: "Loader"
+    name: "Loader",
+
+    mounted() {
+        this.$refs.loader.setAttribute('tabindex', '0');
+        this.$refs.loader.focus();
+        this.$refs.loader.loader('focusout', () => {
+            this.$refs.gifyListContainer.removeAttribute('tabindex');
+        });
+    },
+
+    destroyed() {
+        this.$refs.loader.removeEventListener('focusout', () => {
+            this.$refs.loader.removeAttribute('tabindex');
+        })
+    },
 }
 </script>
 
