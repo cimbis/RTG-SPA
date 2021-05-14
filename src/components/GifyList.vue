@@ -22,14 +22,13 @@
 
             <div class="gif-description">
                 <span
-                    aria-label="gify title"
                     class="title"
                     tabindex="0"
                     @click="(e) => copyGifyLink(e, gify)"
                     @keydown.enter.space.prevent="(e) => copyGifyLink(e, gify)"
                 >
                     <div class="sr-only">
-                        gify title - click to copy gify link to clipboard
+                        Click to copy gify link to clipboard
                     </div>
                     {{ gify.title }}
                 </span>
@@ -105,14 +104,16 @@ export default {
     },
 
     mounted() {
-        this.$refs.gifyListContainer.setAttribute('tabindex', '0');
-        this.$refs.gifyListContainer.focus();
-        this.$refs.gifyListContainer.addEventListener('focusout', () => {
-            this.$refs.gifyListContainer.removeAttribute('tabindex');
-        });
+        this.$nextTick(() => {
+            this.$refs.gifyListContainer.setAttribute('tabindex', '0');
+            this.$refs.gifyListContainer.focus();
+            this.$refs.gifyListContainer.addEventListener('focusout', () => {
+                this.$refs.gifyListContainer.removeAttribute('tabindex');
+            });
+        })
     },
 
-    destroyed() {
+    beforeDestroy() {
         this.$refs.gifyListContainer.removeEventListener('focusout', () => {
             this.$refs.gifyListContainer.removeAttribute('tabindex');
         })
