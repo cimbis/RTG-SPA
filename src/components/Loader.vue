@@ -7,7 +7,7 @@
             Loading giffies
         </div>
         <div class="lds-heart">
-            <div />
+            <div/>
         </div>
     </div>
 </template>
@@ -17,14 +17,16 @@ export default {
     name: "Loader",
 
     mounted() {
-        this.$refs.loader.setAttribute('tabindex', '0');
-        this.$refs.loader.focus();
-        this.$refs.loader.loader('focusout', () => {
-            this.$refs.gifyListContainer.removeAttribute('tabindex');
-        });
+        this.$nextTick(() => {
+            this.$refs.loader.setAttribute('tabindex', '0');
+            this.$refs.loader.focus();
+            this.$refs.loader.loader('focusout', () => {
+                this.$refs.gifyListContainer.removeAttribute('tabindex');
+            });
+        })
     },
 
-    destroyed() {
+    beforeDestroy() {
         this.$refs.loader.removeEventListener('focusout', () => {
             this.$refs.loader.removeAttribute('tabindex');
         })
@@ -32,7 +34,7 @@ export default {
 }
 </script>
 
-<style scoped lang="scss">
+<style lang="scss" scoped>
 
 .loader {
     display: flex;
